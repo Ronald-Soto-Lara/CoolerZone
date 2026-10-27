@@ -18,11 +18,13 @@ export function SiteHeader() {
           {siteConfig.instagramUrl && (
             <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram de CoolerZone">
               <ExternalLink size={18} />
+              <span className="social-label">Instagram</span>
             </a>
           )}
           {siteConfig.facebookUrl && (
             <a href={siteConfig.facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook de CoolerZone">
               <ExternalLink size={18} />
+              <span className="social-label">Facebook</span>
             </a>
           )}
           <Link className="header-bag" href="/#catalogo" aria-label="Ver catálogo">

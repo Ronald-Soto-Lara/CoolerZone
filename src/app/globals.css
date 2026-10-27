@@ -22,8 +22,9 @@ button, input, select { font: inherit; }
 .main-nav { display: flex; gap: 28px; color: var(--muted); font-size: 13px; font-weight: 650; }
 .main-nav a:hover, .footer-socials a:hover, .text-link:hover { color: var(--orange); }
 .social-links { display: flex; align-items: center; gap: 14px; }
-.social-links a { display: grid; place-items: center; color: var(--muted); }
+.social-links a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 700; }
 .social-links a:hover { color: var(--ink); }
+.social-label { display: inline; }
 .header-bag { border-left: 1px solid var(--line); padding-left: 15px; }
 .hero { min-height: 570px; display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 55px; padding-top: 68px; padding-bottom: 55px; }
 .hero-copy { position: relative; z-index: 1; }
@@ -116,6 +117,7 @@ button, input, select { font: inherit; }
 @media (max-width: 480px) {
   .header-inner { min-height: 65px; }
   .brand { font-size: 17px; }
+  .social-label { display: none; }
   .hero h1 { font-size: 54px; }
   .hero-actions .button { width: 100%; }
   .product-grid { grid-template-columns: 1fr; }
