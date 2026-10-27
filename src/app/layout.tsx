@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "CoolerZone | Tu tienda online",
   description: "Descubre productos y soluciones para disfrutar cada espacio con CoolerZone.",
   keywords: ["CoolerZone", "tienda online", "productos", "compras online"],
+  alternates: { canonical: "/" },
   openGraph: {
     title: "CoolerZone | Tu tienda online",
     description: "Descubre productos y soluciones para disfrutar cada espacio con CoolerZone.",

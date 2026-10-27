@@ -1,0 +1,5 @@
+name,slug,brand,description,price,category,image_url,stock,published
+"Cooler Gamer Turbo X1","cooler-gamer-turbo-x1","CoolerZone","DATOS DE PRUEBA: cooler para celular con ventilación rápida para sesiones gaming.",149.90,"Coolers para celular","https://placehold.co/800x800/17191c/d7f63c?text=Turbo+X1",12,true
+"Cooler RGB Frost Pro","cooler-rgb-frost-pro","CoolerZone","DATOS DE PRUEBA: cooler RGB para celular con soporte ajustable.",189.90,"Coolers para celular","https://placehold.co/800x800/17191c/ff6b35?text=Frost+Pro",8,true
+"Soporte Gaming Mobile","soporte-gaming-mobile","CoolerZone","DATOS DE PRUEBA: soporte plegable para celular y accesorios gaming.",79.90,"Accesorios gaming","https://placehold.co/800x800/e8e5dc/17191c?text=Soporte+Gaming",20,true
+"Cable USB-C Gamer","cable-usb-c-gamer","CoolerZone","DATOS DE PRUEBA: cable USB-C reforzado para cargar tu setup móvil.",39.90,"Accesorios gaming","https://placehold.co/800x800/d7f63c/17191c?text=Cable+USB-C",25,false
