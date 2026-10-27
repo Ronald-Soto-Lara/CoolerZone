@@ -3,8 +3,8 @@ export const siteConfig = {
   url: "https://cooler-zone.vercel.app",
   description: "Coolers para celulares y accesorios gaming en Bolivia.",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
-  facebookUrl: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "",
-  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
+  facebookUrl: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? process.env.enlacefacebook ?? "",
+  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? process.env.enlaceinstagram ?? "",
 };
 
 export function getWhatsAppUrl(productName?: string) {
