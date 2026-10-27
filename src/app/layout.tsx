@@ -14,12 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cooler-zone.vercel.app/"),
   title: "CoolerZone | Tu tienda online",
   description: "Descubre productos y soluciones para disfrutar cada espacio con CoolerZone.",
   keywords: ["CoolerZone", "tienda online", "productos", "compras online"],
   openGraph: {
     title: "CoolerZone | Tu tienda online",
     description: "Descubre productos y soluciones para disfrutar cada espacio con CoolerZone.",
+    url: "https://cooler-zone.vercel.app/",
     siteName: "CoolerZone",
     locale: "es_LA",
     type: "website",
