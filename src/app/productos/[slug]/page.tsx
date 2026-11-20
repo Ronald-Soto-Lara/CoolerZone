@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ShareButton } from "@/components/share-button";
+import { PayPalButton } from "@/components/paypal-button";
 import { getPublishedProduct } from "@/lib/products";
 import { getWhatsAppUrl, siteConfig } from "@/lib/site";
 
@@ -84,6 +85,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {whatsappUrl && <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={18} /> Consultar por WhatsApp</a>}
               <ShareButton title={product.name} />
             </div>
+            {product.stock > 0 && <PayPalButton product={product} />}
           </article>
         </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
