@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
+import { TawkChat } from "@/components/tawk-chat";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,8 +35,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
-      {gaId && <GoogleAnalytics gaId={gaId} />}
+      <body>
+        {children}
+        {gaId && <GoogleAnalytics gaId={gaId} />}
+        <TawkChat />
+      </body>
     </html>
   );
 }
