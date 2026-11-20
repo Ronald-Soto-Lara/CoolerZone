@@ -7,7 +7,13 @@ declare global {
   interface Window {
     paypal?: {
       Buttons: (options: {
-        style?: Record<string, string>;
+        style?: {
+          layout?: string;
+          color?: string;
+          shape?: string;
+          label?: string;
+          height?: number;
+        };
         createOrder: () => Promise<string>;
         onApprove: (data: { orderID: string }) => Promise<void>;
         onError?: (error: unknown) => void;
@@ -41,7 +47,7 @@ export function PayPalButton({ product }: { product: Product }) {
       if (!window.paypal || !containerRef.current) return;
 
       window.paypal.Buttons({
-        style: { layout: "vertical", color: "gold", shape: "rect", label: "paypal", height: "46" },
+        style: { layout: "vertical", color: "gold", shape: "rect", label: "paypal", height: 46 },
         createOrder: async () => {
           setMessage("");
           const response = await fetch("/api/paypal/orders", {
