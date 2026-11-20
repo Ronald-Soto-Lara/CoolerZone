@@ -25,6 +25,7 @@ declare global {
 
 export function PayPalButton({ product }: { product: Product }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const requestIdRef = useRef<string | null>(null);
   const [message, setMessage] = useState("");
   const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
   const exchangeRate = Number(process.env.NEXT_PUBLIC_PAYPAL_BOB_TO_USD_RATE ?? 0);
@@ -50,10 +51,11 @@ export function PayPalButton({ product }: { product: Product }) {
         style: { layout: "vertical", color: "gold", shape: "rect", label: "paypal", height: 46 },
         createOrder: async () => {
           setMessage("");
+          requestIdRef.current ??= crypto.randomUUID();
           const response = await fetch("/api/paypal/orders", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ productId: product.id }),
+            body: JSON.stringify({ productId: product.id, requestId: requestIdRef.current }),
           });
           const result = await response.json();
           if (!response.ok) throw new Error(result.error ?? "No se pudo iniciar el pago.");
@@ -61,16 +63,54 @@ export function PayPalButton({ product }: { product: Product }) {
         },
         onApprove: async ({ orderID }) => {
           setMessage("Confirmando el pago...");
-          const response = await fetch(`/api/paypal/orders/${encodeURIComponent(orderID)}/capture`, {
-            method: "POST",
-          });
-          const result = await response.json();
-          if (!response.ok) throw new Error(result.error ?? "No se pudo confirmar el pago.");
-          setMessage("Pago completado. En breve te contactaremos.");
+          let result: { status?: string; message?: string; error?: string } = {};
+          for (let attempt = 0; attempt < 3; attempt += 1) {
+            let response: Response;
+            try {
+              response = await fetch(`/api/paypal/orders/${encodeURIComponent(orderID)}/capture`, {
+                method: "POST",
+              });
+            } catch {
+              if (attempt === 2) {
+                throw new Error("No se pudo conectar para confirmar el pago. No inicies otra compra; vuelve a intentarlo.");
+              }
+              await new Promise((resolve) => window.setTimeout(resolve, 750 * (attempt + 1)));
+              continue;
+            }
+
+            try {
+              result = await response.json();
+            } catch {
+              if (attempt === 2) {
+                throw new Error("El servidor no pudo confirmar el resultado del pago. Vuelve a intentarlo.");
+              }
+              await new Promise((resolve) => window.setTimeout(resolve, 750 * (attempt + 1)));
+              continue;
+            }
+
+            if (response.ok) break;
+            if (response.status < 500 || attempt === 2) {
+              throw new Error(result.error ?? "No se pudo confirmar el pago.");
+            }
+            await new Promise((resolve) => window.setTimeout(resolve, 750 * (attempt + 1)));
+          }
+          if (!result.status) {
+            throw new Error(result.error ?? "No se pudo confirmar el pago.");
+          }
+          requestIdRef.current = null;
+          setMessage(
+            result.status === "REFUNDED"
+              ? result.message ?? "El pago fue reembolsado."
+              : "Pago completado y pedido registrado. En breve te contactaremos.",
+          );
         },
         onError: (error) => {
           console.error("PayPal:", error);
-          setMessage("El pago no pudo completarse. Puedes volver a intentarlo.");
+          setMessage(
+            error instanceof Error
+              ? error.message
+              : "El pago no pudo completarse. Inténtalo nuevamente.",
+          );
         },
       }).render(containerRef.current);
     }
