@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CoolerZone Bolivia
 
-## Getting Started
+Catálogo de coolers para celular construido con Next.js y Supabase. Los productos publicados se leen desde la tabla `products`; las compras usan PayPal.
 
-First, run the development server:
+## Configuración local
+
+1. Copia `.env.example` a `.env.local`.
+2. Completa las variables con los valores reales de tus proyectos de Supabase y PayPal.
+3. Ejecuta las migraciones de Supabase y luego inicia el sitio:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` son necesarias para leer el catálogo. Si aún no están configuradas, el sitio puede compilar, pero el catálogo quedará vacío y la aplicación registrará el error.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+El checkout requiere, además, `SUPABASE_SERVICE_ROLE_KEY`, las credenciales de PayPal (`PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` y `NEXT_PUBLIC_PAYPAL_CLIENT_ID`) y una tasa válida en `PAYPAL_BOB_TO_USD_RATE`. No expongas `SUPABASE_SERVICE_ROLE_KEY` ni `PAYPAL_CLIENT_SECRET` con el prefijo `NEXT_PUBLIC_`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+WhatsApp, redes sociales y Tawk.to son opcionales. Consulta `.env.example` para la lista completa.
 
-## Learn More
+## Base de datos y catálogo MEMO
 
-To learn more about Next.js, take a look at the following resources:
+Aplica los archivos SQL de `supabase/migrations` en orden cronológico desde Supabase CLI o el SQL Editor del proyecto. La migración `20261123000000_seed_memo_coolers.sql` agrega los seis modelos MEMO de este catálogo; usa `ON CONFLICT DO NOTHING` para no sobrescribir datos de productos ya existentes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`products-memo-coolers.csv` contiene los mismos registros para importarlos desde el panel de Supabase. Los productos se publican con stock `0` hasta confirmar inventario; actualiza el stock real antes de habilitar compras. Las fotos no se incluyeron porque no se proporcionaron imágenes propias.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Categorías y precios de referencia
 
-## Deploy on Vercel
+Las categorías del filtro distinguen el sistema de sujeción: **Coolers magnéticos**, **Coolers híbridos** (imán y clip) y **Coolers con clip**. La refrigeración semiconductora/Peltier, potencia, pantalla, RGB y ventiladores se describen en cada ficha.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Los precios cargados son importes referenciales en bolivianos, no cotizaciones de distribuidores locales confirmadas. Deben verificarse antes de recibir pagos. Los listados de AliExpress se consultaron el 23 de noviembre de 2026; sus precios pueden cambiar y no incluyen necesariamente importación o entrega local:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [MEMO CX12](https://www.aliexpress.com/w/wholesale-memo-cx12-cooler.html)
+- [MEMO CX08 Pro](https://www.aliexpress.com/w/wholesale-memo-cx08-pro-cooler.html)
+- [MEMO CX26 Ultra 30W](https://www.aliexpress.com/w/wholesale-memo-cx26-ultra-30w.html)
+- [MEMO DL05](https://www.aliexpress.com/w/wholesale-memo-dl05-cooler.html)
+- [MEMO CX07](https://www.aliexpress.com/w/wholesale-memo-cx07-cooler.html)
+- [MEMO DL21](https://www.aliexpress.com/w/wholesale-memo-dl21-dual-fan.html)

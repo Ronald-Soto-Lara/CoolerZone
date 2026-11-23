@@ -15,7 +15,15 @@ export type Product = {
   updated_at: string;
 };
 
+const missingSupabaseConfig =
+  "No se pudieron cargar los productos: faltan NEXT_PUBLIC_SUPABASE_URL o NEXT_PUBLIC_SUPABASE_ANON_KEY.";
+
 export async function getPublishedProducts() {
+  if (!supabase) {
+    console.error(missingSupabaseConfig);
+    return [];
+  }
+
   const { data, error } = await supabase
     .from("products")
     .select("id, name, slug, brand, description, price, category, image_url, stock, published, created_at, updated_at")
@@ -31,6 +39,11 @@ export async function getPublishedProducts() {
 }
 
 export async function getPublishedProduct(slug: string) {
+  if (!supabase) {
+    console.error(missingSupabaseConfig);
+    return null;
+  }
+
   const { data, error } = await supabase
     .from("products")
     .select("id, name, slug, brand, description, price, category, image_url, stock, published, created_at, updated_at")
