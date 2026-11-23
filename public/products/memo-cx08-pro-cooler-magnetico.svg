@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="title description">
+  <title id="title">Ilustración conceptual MEMO CX08 Pro</title>
+  <desc id="description">Ilustración original de demostración de un cooler para celular con aro RGB y clips; no es una fotografía del producto.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#151126"/><stop offset="1" stop-color="#242039"/></linearGradient>
+    <linearGradient id="ring"><stop stop-color="#f472b6"/><stop offset=".5" stop-color="#a78bfa"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <linearGradient id="body" x2="1" y2="1"><stop stop-color="#424153"/><stop offset="1" stop-color="#171722"/></linearGradient>
+  </defs>
+  <rect width="800" height="800" rx="54" fill="url(#bg)"/>
+  <circle cx="400" cy="420" r="240" fill="#c084fc" opacity=".12"/>
+  <text x="54" y="88" fill="#e9d5ff" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="4">MEMO / COOLING</text>
+  <text x="54" y="145" fill="#fff" font-family="Arial,sans-serif" font-size="38" font-weight="700">CX08 PRO</text>
+  <rect x="240" y="210" width="320" height="410" rx="45" fill="#080b10" stroke="#64748b" stroke-width="8"/>
+  <rect x="257" y="227" width="286" height="376" rx="33" fill="#191a2b"/>
+  <path d="M260 375h-58v85h58M540 375h58v85h-58" fill="none" stroke="#9ca3af" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="400" cy="418" r="145" fill="#0b0b13" stroke="url(#ring)" stroke-width="17"/>
+  <circle cx="400" cy="418" r="115" fill="url(#body)" stroke="#55516c" stroke-width="5"/>
+  <g fill="#85809a">
+    <path d="M398 406c-27-58-5-82 15-80 20 3 18 36-15 80Z"/>
+    <path d="M412 419c58-27 82-5 80 15-3 20-36 18-80-15Z"/>
+    <path d="M402 431c27 58 5 82-15 80-20-3-18-36 15-80Z"/>
+    <path d="M388 417c-58 27-82 5-80-15 3-20 36-18 80 15Z"/>
+  </g>
+  <circle cx="400" cy="418" r="30" fill="#151522" stroke="#e9d5ff" stroke-width="4"/>
+  <text x="400" y="705" text-anchor="middle" fill="#d8d4e5" font-family="Arial,sans-serif" font-size="19" letter-spacing="2">ILUSTRACIÓN DE DEMOSTRACIÓN · NO ES FOTO REAL</text>
+</svg>

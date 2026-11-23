@@ -9,8 +9,8 @@ values
     'Cooler magnético con lámina adhesiva para equipos sin MagSafe. Refrigeración Peltier de 12 W, batería integrada recargable de 2000 mAh o alimentación USB-C y modo inteligente que regula el enfriamiento según la temperatura. Precio referencial; confirma precio y disponibilidad por WhatsApp.',
     250.00,
     'Coolers magnéticos',
-    null,
-    0,
+    '/products/memo-cx12-cooler-gamer-rgb.svg',
+    8,
     true
   ),
   (
@@ -20,8 +20,8 @@ values
     'Cooler de sujeción híbrida: magnética y con clips ajustables. Radiador semiconductor e iluminación RGB; funciona por USB-C y se recomienda un cargador de 20 a 25 W para alcanzar el máximo rendimiento. Precio referencial; confirma precio y disponibilidad por WhatsApp.',
     200.00,
     'Coolers híbridos',
-    null,
-    0,
+    '/products/memo-cx08-pro-cooler-magnetico.svg',
+    10,
     true
   ),
   (
@@ -31,8 +31,8 @@ values
     'Cooler magnético con refrigeración semiconductora de hasta 30 W (12 V / 2,5 A), pantalla digital de temperatura, niveles de ventilación y modo automático. Precio referencial; confirma precio y disponibilidad por WhatsApp.',
     350.00,
     'Coolers magnéticos',
-    null,
-    0,
+    '/products/memo-cx26-ultra-30w.svg',
+    5,
     true
   ),
   (
@@ -42,8 +42,8 @@ values
     'Cooler cableado por USB-C, sin batería interna, con clip lateral extensible, pantalla LED de temperatura e iluminación RGB. Precio referencial; confirma precio y disponibilidad por WhatsApp.',
     130.00,
     'Coolers con clip',
-    null,
-    0,
+    '/products/memo-dl05-cooler-clip-pantalla.svg',
+    12,
     true
   ),
   (
@@ -53,8 +53,8 @@ values
     'Cooler compacto y liviano con refrigeración semiconductora, conexión USB-C y sujeción magnética adaptable con pinzas. Precio referencial; confirma precio y disponibilidad por WhatsApp.',
     165.00,
     'Coolers híbridos',
-    null,
-    0,
+    '/products/memo-cx07-magnetic-cooler.svg',
+    9,
     true
   ),
   (
@@ -64,8 +64,8 @@ values
     'Cooler con clip extensible, doble ventilador, tres velocidades ajustables, placa trasera metalizada y alimentación por cable USB. Precio referencial; confirma precio y disponibilidad por WhatsApp.',
     290.00,
     'Coolers con clip',
-    null,
-    0,
+    '/products/memo-dl21-dual-fan.svg',
+    7,
     true
   )
 on conflict (slug) do nothing;

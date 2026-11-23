@@ -23,7 +23,7 @@ WhatsApp, redes sociales y Tawk.to son opcionales. Consulta `.env.example` para 
 
 Aplica los archivos SQL de `supabase/migrations` en orden cronológico desde Supabase CLI o el SQL Editor del proyecto. La migración `20261123000000_seed_memo_coolers.sql` agrega los seis modelos MEMO de este catálogo; usa `ON CONFLICT DO NOTHING` para no sobrescribir datos de productos ya existentes.
 
-`products-memo-coolers.csv` contiene los mismos registros para importarlos desde el panel de Supabase. Los productos se publican con stock `0` hasta confirmar inventario; actualiza el stock real antes de habilitar compras. Las fotos no se incluyeron porque no se proporcionaron imágenes propias.
+`products-memo-coolers.csv` contiene los mismos registros para importarlos desde el panel de Supabase. Las imágenes en `public/products` son ilustraciones conceptuales originales para demostración, no fotografías oficiales de los modelos. El stock incluido es ficticio y solo sirve para la demo; reemplázalo antes de cualquier uso comercial.
 
 ### Categorías y precios de referencia
 
